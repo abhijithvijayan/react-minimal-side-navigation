@@ -73,6 +73,18 @@ const Navigation: React.FC<SideNavProps> = ({
         <nav role="navigation" aria-label="side-navigation">
           {items.map((item) => {
             const ElemBefore = item.elemBefore;
+            const isActiveTab: boolean =
+              // item is expanded and
+              activeSubNav.expanded &&
+              // either the current expandable section is selected
+              (item.itemId === activeSubNav.selectedId ||
+                // or some item in the expandable section of the current item is selected or active
+                (item.subNav &&
+                  item.subNav.some(
+                    (_subNavItem) =>
+                      _subNavItem.itemId === activeSubNav.selectedId
+                  )) ||
+                false);
 
             return (
               <ul key={item.itemId} className="side-navigation">
@@ -98,44 +110,32 @@ const Navigation: React.FC<SideNavProps> = ({
 
                     {item.subNav && item.subNav.length > 0 && (
                       <Icon
-                        name={
-                          !activeSubNav.expanded ? 'chevron-down' : 'chevron-up'
-                        }
+                        name={isActiveTab ? 'chevron-up' : 'chevron-down'}
                       />
                     )}
                   </div>
                 </li>
 
-                {item.subNav &&
-                  // either current item is selected
-                  (item.itemId === activeSubNav.selectedId ||
-                    // or some item in the expandable section of the current item is selected or active
-                    item.subNav.some(
-                      (_subNavItem) =>
-                        _subNavItem.itemId === activeSubNav.selectedId
-                    )) &&
-                  activeSubNav.expanded && (
-                    <ul className="sub-nav-item">
-                      {item.subNav.map((subNavItem) => {
-                        return (
-                          <li key={subNavItem.itemId}>
-                            <div
-                              onClick={(): void =>
-                                handleClick(subNavItem.itemId)
-                              }
-                              className={`sub-item hover:bg-gray-100 hover:text-gray-800 hover:border-pink-500 block px-16 py-2 text-sm text-gray-700 border-l-2 cursor-pointer ${
-                                activeSubNav.selectedId === subNavItem.itemId
-                                  ? 'text-gray-800 bg-gray-100 border-pink-500'
-                                  : ''
-                              } `}
-                            >
-                              {subNavItem.title}
-                            </div>
-                          </li>
-                        );
-                      })}
-                    </ul>
-                  )}
+                {item.subNav && isActiveTab && (
+                  <ul className="sub-nav-item">
+                    {item.subNav.map((subNavItem) => {
+                      return (
+                        <li key={subNavItem.itemId}>
+                          <div
+                            onClick={(): void => handleClick(subNavItem.itemId)}
+                            className={`sub-item hover:bg-gray-100 hover:text-gray-800 hover:border-pink-500 block px-16 py-2 text-sm text-gray-700 border-l-2 cursor-pointer ${
+                              activeSubNav.selectedId === subNavItem.itemId
+                                ? 'text-gray-800 bg-gray-100 border-pink-500'
+                                : ''
+                            } `}
+                          >
+                            {subNavItem.title}
+                          </div>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                )}
               </ul>
             );
           })}
