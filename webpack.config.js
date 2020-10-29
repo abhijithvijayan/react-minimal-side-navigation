@@ -89,7 +89,7 @@ module.exports = {
       verbose: true,
     }),
     // write css file(s) to build folder
-    new MiniCssExtractPlugin({filename: 'ReactNavSidebar.css'}),
+    new MiniCssExtractPlugin({filename: 'ReactMinimalSideNavigation.css'}),
   ],
 
   optimization: {
