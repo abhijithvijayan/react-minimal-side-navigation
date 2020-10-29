@@ -61,7 +61,7 @@ yarn add react-minimal-side-navigation
 ```js
 import React from 'react';
 
-import SideNavigation from 'react-minimal-side-navigation';
+import {Navigation} from 'react-minimal-side-navigation';
 import 'react-minimal-side-navigation/lib/ReactMinimalSideNavigation.css';
 
 function App() {
