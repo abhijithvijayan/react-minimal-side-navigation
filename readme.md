@@ -37,12 +37,17 @@
 
 ## Table of Contents
 
+- [Demo](#demo)
 - [Installation](#installation)
 - [Usage](#usage)
 - [API](#api)
 - [Issues](#issues)
   - [🐛 Bugs](#-bugs)
 - [LICENSE](#license)
+
+## Demo
+
+> https://codesandbox.io/s/react-minimal-side-navigation-example-y299d
 
 ## Installation
 
