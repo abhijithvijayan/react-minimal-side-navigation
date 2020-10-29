@@ -26,7 +26,7 @@ export type SideNavProps = {
   onSelect?: ({itemId}: {itemId: string}) => void;
 };
 
-export const Navigation: React.FC<SideNavProps> = ({
+const Navigation: React.FC<SideNavProps> = ({
   activeItemId,
   onSelect,
   items,
@@ -141,3 +141,5 @@ export const Navigation: React.FC<SideNavProps> = ({
     </>
   );
 };
+
+export default Navigation;
