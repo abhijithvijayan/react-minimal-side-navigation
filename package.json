@@ -1,6 +1,6 @@
 {
 	"name": "react-minimal-side-navigation",
-	"version": "1.2.0",
+	"version": "1.3.2",
 	"description": "Minimal side navigation component for React",
 	"license": "MIT",
 	"repository": "https://github.com/abhijithvijayan/react-minimal-side-navigation.git",
@@ -18,9 +18,8 @@
 		"lib"
 	],
 	"scripts": {
-		"dev": "tsc --watch",
-		"build": "rimraf lib && tsc",
-		"prepare": "install-peers",
+		"dev": "cross-env NODE_ENV=development webpack --watch",
+		"build": "cross-env NODE_ENV=production webpack",
 		"pack:list": "npm pack && tar -xvzf *.tgz && rm -rf package *.tgz",
 		"prepublishOnly": "yarn build",
 		"lint": "eslint . --ext .ts,.tsx",
@@ -36,9 +35,6 @@
 			"yarn run lint:fix"
 		]
 	},
-	"resolutions": {
-		"styled-components": "^5"
-	},
 	"keywords": [
 		"side-navigation",
 		"react",
@@ -46,23 +42,38 @@
 		"side-nav"
 	],
 	"peerDependencies": {
-		"react": "*"
+		"awesome-react-icons": ">=1.1.1",
+		"react": ">=16.8.0",
+		"tailwindcss": ">=1.9.6"
 	},
 	"dependencies": {
+		"@babel/runtime": "^7.12.1",
 		"awesome-react-icons": "^1.1.1",
-		"styled-components": "^5.2.0",
-		"twin.macro": "^1.12.0"
+		"tailwindcss": "^1.9.6",
+		"react": "16.13.1"
 	},
 	"devDependencies": {
 		"@abhijithvijayan/eslint-config": "2.5.6",
 		"@abhijithvijayan/eslint-config-airbnb": "^1.0.2",
 		"@abhijithvijayan/tsconfig": "^1.3.0",
+		"@babel/core": "^7.12.3",
+		"@babel/plugin-proposal-class-properties": "^7.12.1",
+		"@babel/plugin-proposal-object-rest-spread": "^7.12.1",
+		"@babel/plugin-transform-destructuring": "^7.12.1",
+		"@babel/plugin-transform-runtime": "^7.12.1",
+		"@babel/preset-env": "^7.12.1",
+		"@babel/preset-react": "^7.12.1",
+		"@babel/preset-typescript": "^7.12.1",
 		"@types/node": "^14.14.6",
 		"@types/react": "^16.9.55",
-		"@types/styled-components": "^5.1.4",
 		"@typescript-eslint/eslint-plugin": "^4.6.0",
 		"@typescript-eslint/parser": "^4.6.0",
+		"autoprefixer": "^10.0.1",
 		"babel-eslint": "^10.1.0",
+		"babel-loader": "^8.1.0",
+		"clean-webpack-plugin": "^3.0.0",
+		"cross-env": "^7.0.2",
+		"css-loader": "^5.0.0",
 		"eslint": "^7.12.1",
 		"eslint-config-prettier": "^6.15.0",
 		"eslint-plugin-import": "^2.22.1",
@@ -71,11 +82,21 @@
 		"eslint-plugin-prettier": "^3.1.4",
 		"eslint-plugin-react": "^7.21.5",
 		"eslint-plugin-react-hooks": "^4.2.0",
+		"fork-ts-checker-webpack-plugin": "^5.2.1",
 		"husky": "^4.3.0",
-		"install-peers-cli": "^2.2.0",
 		"lint-staged": "^10.5.0",
+		"mini-css-extract-plugin": "^1.2.1",
+		"node-sass": "^4.14.1",
+		"optimize-css-assets-webpack-plugin": "^5.0.4",
+		"postcss": "^8.1.4",
+		"postcss-loader": "^4.0.4",
 		"prettier": "^2.1.2",
+		"resolve-url-loader": "^3.1.2",
 		"rimraf": "^3.0.2",
-		"typescript": "^4.0.5"
+		"sass-loader": "^10.0.4",
+		"ts-loader": "^8.0.7",
+		"typescript": "^4.0.5",
+		"webpack": "^5.3.1",
+		"webpack-cli": "^4.1.0"
 	}
 }

@@ -1,7 +1,8 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import Icon from 'awesome-react-icons';
 import React, {useState} from 'react';
-import tw from 'twin.macro';
+
+import './styles.scss';
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace
@@ -80,13 +81,11 @@ const Navigation: React.FC<SideNavProps> = ({
                     ? handleSubNavExpand(item)
                     : handleClick(item.itemId)
                 }
-                css={[
-                  tw`hover:bg-gray-100 hover:text-gray-800 hover:border-pink-500 focus:outline-none flex items-center justify-between w-full px-6 py-3 text-gray-700 border-l-2 cursor-pointer`,
-
-                  activeSubNav.selectedId === item.itemId &&
-                    tw`text-gray-800 bg-gray-100 border-pink-500`,
-                ]}
-                className="main-item"
+                className={`main-item hover:bg-gray-100 hover:text-gray-800 hover:border-pink-500 focus:outline-none flex items-center justify-between w-full px-6 py-3 text-gray-700 border-l-2 cursor-pointer ${
+                  activeSubNav.selectedId === item.itemId
+                    ? 'text-gray-800 bg-gray-100 border-pink-500'
+                    : ''
+                }`}
               >
                 <span className="flex items-center">
                   {/** Prefix Icon Component */}
@@ -120,13 +119,9 @@ const Navigation: React.FC<SideNavProps> = ({
                       <li key={subNavItem.itemId}>
                         <div
                           onClick={(): void => handleClick(subNavItem.itemId)}
-                          css={[
-                            tw`hover:bg-gray-100 hover:text-gray-800 hover:border-pink-500 block px-16 py-2 text-sm text-gray-700 border-l-2 cursor-pointer`,
-
-                            activeSubNav.selectedId === subNavItem.itemId &&
-                              tw`text-gray-800 bg-gray-100 border-pink-500`,
-                          ]}
-                          className="sub-item"
+                          className={`sub-item hover:bg-gray-100 hover:text-gray-800 hover:border-pink-500 block px-16 py-2 text-sm text-gray-700 border-l-2 cursor-pointer ${
+                            activeSubNav.selectedId === subNavItem.itemId
+                          } ? 'text-gray-800 bg-gray-100 border-pink-500': ''`}
                         >
                           {subNavItem.title}
                         </div>
