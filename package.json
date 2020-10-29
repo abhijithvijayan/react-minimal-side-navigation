@@ -16,7 +16,7 @@
 	"types": "lib",
 	"files": [
 		"lib",
-		".github/demo.png"
+		".github/screenshot.png"
 	],
 	"scripts": {
 		"dev": "cross-env NODE_ENV=development webpack --watch",
