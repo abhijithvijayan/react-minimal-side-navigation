@@ -46,10 +46,12 @@
 		"side-nav"
 	],
 	"peerDependencies": {
-		"awesome-react-icons": "^1.x.x",
-		"react": "*",
-		"styled-components": "^5.x.x",
-		"twin.macro": "^1.x.x"
+		"react": "*"
+	},
+	"dependencies": {
+		"awesome-react-icons": "^1.1.1",
+		"styled-components": "^5.2.0",
+		"twin.macro": "^1.12.0"
 	},
 	"devDependencies": {
 		"@abhijithvijayan/eslint-config": "2.5.6",
