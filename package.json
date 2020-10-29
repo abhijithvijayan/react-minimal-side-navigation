@@ -20,6 +20,7 @@
 	"scripts": {
 		"dev": "tsc --watch",
 		"build": "rimraf lib && tsc",
+		"prepare": "install-peers",
 		"pack:list": "npm pack && tar -xvzf *.tgz && rm -rf package *.tgz",
 		"prepublishOnly": "yarn build",
 		"lint": "eslint . --ext .ts,.tsx",
@@ -68,6 +69,7 @@
 		"eslint-plugin-react": "^7.21.5",
 		"eslint-plugin-react-hooks": "^4.2.0",
 		"husky": "^4.3.0",
+		"install-peers-cli": "^2.2.0",
 		"lint-staged": "^10.5.0",
 		"prettier": "^2.1.2",
 		"rimraf": "^3.0.2",
