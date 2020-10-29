@@ -15,7 +15,8 @@
 	"main": "lib/index.js",
 	"types": "lib",
 	"files": [
-		"lib"
+		"lib",
+		".github/demo.png"
 	],
 	"scripts": {
 		"dev": "cross-env NODE_ENV=development webpack --watch",

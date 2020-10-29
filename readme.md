@@ -33,6 +33,8 @@
 
 ❤️ it? ⭐️ it on [GitHub](https://github.com/abhijithvijayan/react-minimal-side-navigation/stargazers) or [Tweet](https://twitter.com/intent/tweet?text=Check%20out%20react-minimal-side-navigation%21%20by%20%40_abhijithv%0A%0AMinimal%20side%20navigation%20component%20for%20React%0Ahttps%3A%2F%2Fgithub.com%2Fabhijithvijayan%2Freact-minimal-side-navigation%0A%0A%23react%20%23sidenavigation%20%23library%20%23javascript%20%23typescript) about it.
 
+<img src=".github/demo.png" width="300" />
+
 ## Table of Contents
 
 - [Installation](#installation)
@@ -57,19 +59,80 @@ yarn add react-minimal-side-navigation
 ## Usage
 
 ```js
-import SideNavigation from 'react-minimal-side-navigation';
+import React from 'react';
 
+import SideNavigation from 'react-minimal-side-navigation';
+import 'react-minimal-side-navigation/lib/ReactMinimalSideNavigation.css';
+
+function App() {
+    return (
+      <>
+        <Navigation
+            // you can use your own router's api to get pathname
+            activeItemId="/management/members"
+            onSelect={({itemId}) => {
+              // maybe push to the route
+            }}
+            items={[
+              {
+                title: 'Dashboard',
+                itemId: '/dashboard',
+                // you can use your own custom Icon component as well
+                // icon is optional
+                elemBefore: () => <Icon name="inbox" />,
+              },
+              {
+                title: 'Management',
+                itemId: '/management',
+                elemBefore: () => <Icon name="users" />,
+                subNav: [
+                  {
+                    title: 'Projects',
+                    itemId: '/management/projects',
+                  },
+                  {
+                    title: 'Members',
+                    itemId: '/management/members',
+                  },
+                ],
+              },
+              {
+                title: 'Another Item',
+                itemId: '/another',
+                subNav: [
+                  {
+                    title: 'Teams',
+                    itemId: '/management/teams',
+                  },
+                ],
+              },
+            ]}
+          />
+      </>
+    );
+}
 
 ```
 
 ## API
 
-<!-- 
-#### name
+#### items
+
+Type: `array`
+
+Navigation items to render.
+
+#### activeItemId
 
 Type: `string`
 
-Icon's name -->
+Currently selected item id.
+
+#### onSelect
+
+Type: `function`
+
+Called when item is clicked.
 
 ## Issues
 
