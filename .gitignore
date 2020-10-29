@@ -1,0 +1,6 @@
+# ignore all haters
+haters/
+
+node_modules
+yarn.lock
+lib

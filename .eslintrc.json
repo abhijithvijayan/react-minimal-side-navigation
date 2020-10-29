@@ -1,0 +1,30 @@
+{
+	"extends": [
+		"@abhijithvijayan/eslint-config/typescript",
+		"@abhijithvijayan/eslint-config/node",
+		"@abhijithvijayan/eslint-config/react"
+	],
+	"parserOptions": {
+		"project": [
+			"./tsconfig.json"
+		],
+		"sourceType": "module"
+	},
+	"rules": {
+		"import/no-unresolved": ["error", {
+			"ignore": ["^react", "^styled-components", "^twin.macro"]
+		}],
+		"class-methods-use-this": "off",
+		"max-classes-per-file": "off",
+		"node/no-missing-import": "off",
+		"node/no-unpublished-import": "off",
+		"node/no-unsupported-features/es-syntax": ["error", {
+			"ignores": ["modules"]
+		}]
+	},
+	"settings": {
+		"node": {
+			"tryExtensions": [".tsx"] // append tsx to the list as well
+		}
+	}
+}
