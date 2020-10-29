@@ -20,6 +20,7 @@
 	"scripts": {
 		"dev": "cross-env NODE_ENV=development webpack --watch",
 		"build": "cross-env NODE_ENV=production webpack",
+		"prepare": "install-peers",
 		"pack:list": "npm pack && tar -xvzf *.tgz && rm -rf package *.tgz",
 		"prepublishOnly": "yarn build",
 		"lint": "eslint . --ext .ts,.tsx",
@@ -42,15 +43,14 @@
 		"side-nav"
 	],
 	"peerDependencies": {
-		"react": ">=16.8.0",
 		"awesome-react-icons": ">=1.2.2",
+		"react": ">=16.8.0",
 		"tailwindcss": ">=1.9.6"
 	},
 	"dependencies": {
 		"@babel/runtime": "^7.12.1",
-		"awesome-react-icons": "^1.2.2",
-		"react": "16.13.1",
-		"tailwindcss": "^1.9.6"
+		"awesome-react-icons": ">=1.2.2",
+		"tailwindcss": ">=1.9.6"
 	},
 	"devDependencies": {
 		"@abhijithvijayan/eslint-config": "2.5.6",
@@ -84,6 +84,7 @@
 		"eslint-plugin-react-hooks": "^4.2.0",
 		"fork-ts-checker-webpack-plugin": "^5.2.1",
 		"husky": "^4.3.0",
+		"install-peers-cli": "^2.2.0",
 		"lint-staged": "^10.5.0",
 		"mini-css-extract-plugin": "^1.2.1",
 		"node-sass": "^4.14.1",
