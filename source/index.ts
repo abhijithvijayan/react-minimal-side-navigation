@@ -5,4 +5,5 @@
  *  @license  MIT License
  */
 
-export {default} from './side-nav';
+export {Navigation as default} from './side-nav';
+export type {NavItemProps, SideNavProps} from './side-nav';

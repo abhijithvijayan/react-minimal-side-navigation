@@ -12,7 +12,7 @@
 	},
 	"rules": {
 		"import/no-unresolved": ["error", {
-			"ignore": ["^react", "^styled-components", "^twin.macro"]
+			"ignore": ["^react", "^styled-components", "^twin.macro", "^awesome-react-icons"]
 		}],
 		"class-methods-use-this": "off",
 		"max-classes-per-file": "off",

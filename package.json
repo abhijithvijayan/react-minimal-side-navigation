@@ -46,6 +46,7 @@
 		"side-nav"
 	],
 	"peerDependencies": {
+		"awesome-react-icons": "^1.x.x",
 		"react": "*",
 		"styled-components": "^5.x.x",
 		"twin.macro": "^1.x.x"
