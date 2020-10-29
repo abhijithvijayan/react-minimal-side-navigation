@@ -69,72 +69,78 @@ const Navigation: React.FC<SideNavProps> = ({
 
   return (
     <>
-      {items.map((item) => {
-        const ElemBefore = item.elemBefore;
+      {items.length > 0 && (
+        <nav role="navigation" aria-label="side-navigation">
+          {items.map((item) => {
+            const ElemBefore = item.elemBefore;
 
-        return (
-          <ul key={item.itemId} className="side-navigation">
-            <li>
-              <div
-                onClick={(): void =>
-                  item.subNav
-                    ? handleSubNavExpand(item)
-                    : handleClick(item.itemId)
-                }
-                className={`main-item hover:bg-gray-100 hover:text-gray-800 hover:border-pink-500 focus:outline-none flex items-center justify-between w-full px-6 py-3 text-gray-700 border-l-2 cursor-pointer ${
-                  activeSubNav.selectedId === item.itemId
-                    ? 'text-gray-800 bg-gray-100 border-pink-500'
-                    : ''
-                }`}
-              >
-                <span className="flex items-center">
-                  {/** Prefix Icon Component */}
-                  {ElemBefore && <ElemBefore />}
-
-                  <span className="mx-4 font-medium">{item.title}</span>
-                </span>
-
-                {item.subNav && item.subNav.length > 0 && (
-                  <Icon
-                    name={
-                      !activeSubNav.expanded ? 'chevron-down' : 'chevron-up'
+            return (
+              <ul key={item.itemId} className="side-navigation">
+                <li>
+                  <div
+                    onClick={(): void =>
+                      item.subNav
+                        ? handleSubNavExpand(item)
+                        : handleClick(item.itemId)
                     }
-                  />
-                )}
-              </div>
-            </li>
+                    className={`main-item hover:bg-gray-100 hover:text-gray-800 hover:border-pink-500 focus:outline-none flex items-center justify-between w-full px-6 py-3 text-gray-700 border-l-2 cursor-pointer ${
+                      activeSubNav.selectedId === item.itemId
+                        ? 'text-gray-800 bg-gray-100 border-pink-500'
+                        : ''
+                    }`}
+                  >
+                    <span className="flex items-center">
+                      {/** Prefix Icon Component */}
+                      {ElemBefore && <ElemBefore />}
 
-            {item.subNav &&
-              // either current item is selected
-              (item.itemId === activeSubNav.selectedId ||
-                // or some item in the expandable section of the current item is selected or active
-                item.subNav.some(
-                  (_subNavItem) =>
-                    _subNavItem.itemId === activeSubNav.selectedId
-                )) &&
-              activeSubNav.expanded && (
-                <ul className="sub-nav-item">
-                  {item.subNav.map((subNavItem) => {
-                    return (
-                      <li key={subNavItem.itemId}>
-                        <div
-                          onClick={(): void => handleClick(subNavItem.itemId)}
-                          className={`sub-item hover:bg-gray-100 hover:text-gray-800 hover:border-pink-500 block px-16 py-2 text-sm text-gray-700 border-l-2 cursor-pointer ${
-                            activeSubNav.selectedId === subNavItem.itemId
-                              ? 'text-gray-800 bg-gray-100 border-pink-500'
-                              : ''
-                          } `}
-                        >
-                          {subNavItem.title}
-                        </div>
-                      </li>
-                    );
-                  })}
-                </ul>
-              )}
-          </ul>
-        );
-      })}
+                      <span className="mx-4 font-medium">{item.title}</span>
+                    </span>
+
+                    {item.subNav && item.subNav.length > 0 && (
+                      <Icon
+                        name={
+                          !activeSubNav.expanded ? 'chevron-down' : 'chevron-up'
+                        }
+                      />
+                    )}
+                  </div>
+                </li>
+
+                {item.subNav &&
+                  // either current item is selected
+                  (item.itemId === activeSubNav.selectedId ||
+                    // or some item in the expandable section of the current item is selected or active
+                    item.subNav.some(
+                      (_subNavItem) =>
+                        _subNavItem.itemId === activeSubNav.selectedId
+                    )) &&
+                  activeSubNav.expanded && (
+                    <ul className="sub-nav-item">
+                      {item.subNav.map((subNavItem) => {
+                        return (
+                          <li key={subNavItem.itemId}>
+                            <div
+                              onClick={(): void =>
+                                handleClick(subNavItem.itemId)
+                              }
+                              className={`sub-item hover:bg-gray-100 hover:text-gray-800 hover:border-pink-500 block px-16 py-2 text-sm text-gray-700 border-l-2 cursor-pointer ${
+                                activeSubNav.selectedId === subNavItem.itemId
+                                  ? 'text-gray-800 bg-gray-100 border-pink-500'
+                                  : ''
+                              } `}
+                            >
+                              {subNavItem.title}
+                            </div>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  )}
+              </ul>
+            );
+          })}
+        </nav>
+      )}
     </>
   );
 };
