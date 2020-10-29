@@ -42,15 +42,15 @@
 		"side-nav"
 	],
 	"peerDependencies": {
-		"awesome-react-icons": ">=1.1.1",
 		"react": ">=16.8.0",
+		"awesome-react-icons": ">=1.2.2",
 		"tailwindcss": ">=1.9.6"
 	},
 	"dependencies": {
 		"@babel/runtime": "^7.12.1",
-		"awesome-react-icons": "^1.1.1",
-		"tailwindcss": "^1.9.6",
-		"react": "16.13.1"
+		"awesome-react-icons": "^1.2.2",
+		"react": "16.13.1",
+		"tailwindcss": "^1.9.6"
 	},
 	"devDependencies": {
 		"@abhijithvijayan/eslint-config": "2.5.6",
