@@ -121,7 +121,9 @@ const Navigation: React.FC<SideNavProps> = ({
                           onClick={(): void => handleClick(subNavItem.itemId)}
                           className={`sub-item hover:bg-gray-100 hover:text-gray-800 hover:border-pink-500 block px-16 py-2 text-sm text-gray-700 border-l-2 cursor-pointer ${
                             activeSubNav.selectedId === subNavItem.itemId
-                          } ? 'text-gray-800 bg-gray-100 border-pink-500': ''`}
+                              ? 'text-gray-800 bg-gray-100 border-pink-500'
+                              : ''
+                          } `}
                         >
                           {subNavItem.title}
                         </div>
