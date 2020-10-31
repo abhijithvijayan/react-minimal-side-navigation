@@ -31,7 +31,7 @@ module.exports = {
   },
 
   // https://git.io/JTDXB
-  externals: ['react', 'tailwindcss', 'awesome-react-icons'],
+  externals: ['react', 'tailwindcss'],
 
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json'],

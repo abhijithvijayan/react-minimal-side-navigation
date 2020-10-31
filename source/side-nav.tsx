@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import Icon from 'awesome-react-icons';
 import React, {useState} from 'react';
+
+import {ChevronDownIcon, ChevronUpIcon} from './icon';
 
 import './styles.scss';
 
@@ -108,11 +109,9 @@ const Navigation: React.FC<SideNavProps> = ({
                       <span className="mx-4 font-medium">{item.title}</span>
                     </span>
 
-                    {item.subNav && item.subNav.length > 0 && (
-                      <Icon
-                        name={isActiveTab ? 'chevron-up' : 'chevron-down'}
-                      />
-                    )}
+                    {item.subNav &&
+                      item.subNav.length > 0 &&
+                      (isActiveTab ? <ChevronUpIcon /> : <ChevronDownIcon />)}
                   </div>
                 </li>
 
