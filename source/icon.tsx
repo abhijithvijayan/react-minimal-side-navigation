@@ -21,7 +21,7 @@ const ChevronDown: React.FC<IconProps> = ({
         strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="chevron-down_svg__feather chevron-down_svg__feather-chevron-down"
+        className="side-navigation-panel-select-option-icon-chevron-down"
         {...rest}
       >
         <path d="M6 9l6 6 6-6" />
@@ -48,7 +48,7 @@ const ChevronUp: React.FC<IconProps> = ({
         strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="chevron-up_svg__feather chevron-up_svg__feather-chevron-up"
+        className="side-navigation-panel-select-option-icon-chevron-up"
         {...rest}
       >
         <path d="M18 15l-6-6-6 6" />
