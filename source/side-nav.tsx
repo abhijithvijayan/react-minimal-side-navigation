@@ -42,8 +42,8 @@ const Navigation: React.FC<SideNavProps> = ({
     setActiveSubNav((originalSubNav) => ({
       expanded: originalSubNav.expanded,
       selectedId: activeItemId,
-    }))
-  }, [activeItemId])
+    }));
+  }, [activeItemId]);
 
   function handleClick(itemId: string): void {
     if (onSelect) {
