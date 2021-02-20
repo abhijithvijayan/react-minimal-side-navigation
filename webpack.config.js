@@ -64,7 +64,7 @@ module.exports = {
             },
           },
           {
-            loader: 'postcss-loader', // For autoprefixer
+            loader: 'postcss-loader',
             options: {
               postcssOptions: {
                 ident: 'postcss',

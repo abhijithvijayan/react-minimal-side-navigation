@@ -3,7 +3,10 @@ module.exports = {
     removeDeprecatedGapUtilities: true,
     purgeLayersByDefault: true,
   },
-  purge: ["./source/**/*.tsx"],
+  purge: {
+		layers: ['components', 'utilities'],
+  	content:['./source/**/*.tsx']
+	},
   theme: {
     extend: {},
   },
