@@ -38,6 +38,7 @@ const Navigation: React.FC<SideNavProps> = ({
     selectedId: activeItemId,
   });
 
+  // Listen for parent prop changes and update state
   React.useEffect(() => {
     setActiveSubNav((originalSubNav) => ({
       expanded: originalSubNav.expanded,
@@ -46,9 +47,8 @@ const Navigation: React.FC<SideNavProps> = ({
   }, [activeItemId]);
 
   function handleClick(itemId: string): void {
-    if (onSelect) {
-      onSelect({itemId});
-    }
+    // call the callback if supplied
+    onSelect?.({itemId});
   }
 
   function handleSubNavExpand(item: NavItemProps): void {
@@ -56,20 +56,23 @@ const Navigation: React.FC<SideNavProps> = ({
       const currentItemOrSubNavItemIsOpen: boolean =
         // either the parent item is expanded already
         item.itemId === activeSubNav.selectedId ||
+        // or one of its expandable children is selected
         (item.subNav &&
-          // or a subitem is active
           item.subNav.some(
             (_subNavItem) => _subNavItem.itemId === activeSubNav.selectedId
           )) ||
         false;
 
       setActiveSubNav({
-        expanded: !currentItemOrSubNavItemIsOpen,
+        expanded:
+          item.subNav && item.subNav.length > 0
+            ? !currentItemOrSubNavItemIsOpen
+            : false, // disable expansion value, if not expandable
         selectedId: item.itemId,
       });
     } else {
       setActiveSubNav({
-        expanded: true,
+        expanded: !!(item.subNav && item.subNav.length > 0), // expand if expandable
         selectedId: item.itemId,
       });
     }
@@ -102,11 +105,10 @@ const Navigation: React.FC<SideNavProps> = ({
               <ul key={item.itemId} className="side-navigation-panel-select">
                 <li className="side-navigation-panel-select-wrap">
                   <div
-                    onClick={(): void =>
-                      item.subNav && item.subNav.length > 0
-                        ? handleSubNavExpand(item)
-                        : handleClick(item.itemId)
-                    }
+                    onClick={(): void => {
+                      handleSubNavExpand(item);
+                      handleClick(item.itemId);
+                    }}
                     className={`side-navigation-panel-select-option hover:bg-gray-100 hover:text-gray-800 hover:border-pink-500 focus:outline-none ${
                       activeSubNav.selectedId === item.itemId
                         ? 'side-navigation-panel-select-option-selected'
@@ -137,7 +139,13 @@ const Navigation: React.FC<SideNavProps> = ({
                           className="side-navigation-panel-select-inner-wrap"
                         >
                           <div
-                            onClick={(): void => handleClick(subNavItem.itemId)}
+                            onClick={(): void => {
+                              setActiveSubNav({
+                                ...activeSubNav,
+                                selectedId: subNavItem.itemId,
+                              });
+                              handleClick(subNavItem.itemId);
+                            }}
                             className={`side-navigation-panel-select-inner-option hover:bg-gray-100 hover:text-gray-800 hover:border-pink-500 ${
                               activeSubNav.selectedId === subNavItem.itemId
                                 ? 'side-navigation-panel-select-inner-option-selected'
