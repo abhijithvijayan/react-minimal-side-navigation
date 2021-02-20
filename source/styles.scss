@@ -1,10 +1,61 @@
-@tailwind base;
-
 /* Start purging... */
 @tailwind components;
 /* Stop purging. */
 
-/* Write you own custom component styles here */
+.side-navigation-panel {
+  *,
+  &:after,
+  &:before {
+	@apply box-border border-solid border-0;
+
+	border-color: #e2e8f0;
+  }
+
+  ul {
+	@apply m-0 p-0 list-none;
+  }
+
+  .side-navigation-panel-select {
+	.side-navigation-panel-select-wrap {
+	  .side-navigation-panel-select-option {
+		@apply flex items-center justify-between w-full px-6 py-3 text-gray-700 border-l-2 cursor-pointer;
+
+		.side-navigation-panel-select-option-wrap {
+		  @apply flex items-center;
+
+		  .side-navigation-panel-select-option-text {
+			@apply mx-4 font-medium;
+		  }
+		}
+
+		.side-navigation-panel-select-option-icon, svg {
+		  @apply block align-middle;
+		}
+
+		.side-navigation-panel-select-option-icon-chevron-up {
+		}
+		.side-navigation-panel-select-option-icon-chevron-down {
+		}
+	  }
+
+	  .side-navigation-panel-select-option-selected {
+		@apply text-gray-800 bg-gray-100 border-pink-500;
+	  }
+	}
+
+	.side-navigation-panel-select-inner {
+	  .side-navigation-panel-select-inner-wrap {
+		.side-navigation-panel-select-inner-option {
+			@apply block px-16 py-2 text-sm text-gray-700 border-l-2 cursor-pointer;
+		}
+
+		.side-navigation-panel-select-inner-option-selected {
+			@apply text-gray-800 bg-gray-100 border-pink-500;
+		}
+	  }
+	}
+  }
+}
 
 /* Start purging... */
 @tailwind utilities;

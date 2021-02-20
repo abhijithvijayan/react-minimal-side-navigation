@@ -83,7 +83,7 @@ const Navigation: React.FC<SideNavProps> = ({
           aria-label="side-navigation"
           className="side-navigation-panel"
         >
-          {items.map((item) => {
+          {items.map((item: NavItemProps) => {
             const ElemBefore = item.elemBefore;
             const isActiveTab: boolean =
               // item is expanded and
@@ -93,7 +93,7 @@ const Navigation: React.FC<SideNavProps> = ({
                 // or some item in the expandable section of the current item is selected or active
                 (item.subNav &&
                   item.subNav.some(
-                    (_subNavItem) =>
+                    (_subNavItem: NavItemProps) =>
                       _subNavItem.itemId === activeSubNav.selectedId
                   )) ||
                 false);
@@ -107,17 +107,17 @@ const Navigation: React.FC<SideNavProps> = ({
                         ? handleSubNavExpand(item)
                         : handleClick(item.itemId)
                     }
-                    className={`side-navigation-panel-select-option hover:bg-gray-100 hover:text-gray-800 hover:border-pink-500 focus:outline-none flex items-center justify-between w-full px-6 py-3 text-gray-700 border-l-2 cursor-pointer ${
+                    className={`side-navigation-panel-select-option hover:bg-gray-100 hover:text-gray-800 hover:border-pink-500 focus:outline-none ${
                       activeSubNav.selectedId === item.itemId
-                        ? 'side-navigation-panel-select-option-selected text-gray-800 bg-gray-100 border-pink-500'
+                        ? 'side-navigation-panel-select-option-selected'
                         : ''
                     }`}
                   >
-                    <span className="side-navigation-panel-select-option-wrap flex items-center">
+                    <span className="side-navigation-panel-select-option-wrap">
                       {/** Prefix Icon Component */}
                       {ElemBefore && <ElemBefore />}
 
-                      <span className="side-navigation-panel-select-option-text mx-4 font-medium">
+                      <span className="side-navigation-panel-select-option-text">
                         {item.title}
                       </span>
                     </span>
@@ -130,7 +130,7 @@ const Navigation: React.FC<SideNavProps> = ({
 
                 {item.subNav && isActiveTab && (
                   <ul className="side-navigation-panel-select-inner">
-                    {item.subNav.map((subNavItem) => {
+                    {item.subNav.map((subNavItem: NavItemProps) => {
                       return (
                         <li
                           key={subNavItem.itemId}
@@ -138,9 +138,9 @@ const Navigation: React.FC<SideNavProps> = ({
                         >
                           <div
                             onClick={(): void => handleClick(subNavItem.itemId)}
-                            className={`side-navigation-panel-select-inner-option hover:bg-gray-100 hover:text-gray-800 hover:border-pink-500 block px-16 py-2 text-sm text-gray-700 border-l-2 cursor-pointer ${
+                            className={`side-navigation-panel-select-inner-option hover:bg-gray-100 hover:text-gray-800 hover:border-pink-500 ${
                               activeSubNav.selectedId === subNavItem.itemId
-                                ? 'side-navigation-panel-select-inner-option-selected text-gray-800 bg-gray-100 border-pink-500'
+                                ? 'side-navigation-panel-select-inner-option-selected'
                                 : ''
                             } `}
                           >
