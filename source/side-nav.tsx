@@ -103,7 +103,7 @@ const Navigation: React.FC<SideNavProps> = ({
                 <li className="side-navigation-panel-select-wrap">
                   <div
                     onClick={(): void =>
-                      item.subNav
+                      item.subNav && item.subNav.length > 0
                         ? handleSubNavExpand(item)
                         : handleClick(item.itemId)
                     }
@@ -128,7 +128,7 @@ const Navigation: React.FC<SideNavProps> = ({
                   </div>
                 </li>
 
-                {item.subNav && isActiveTab && (
+                {item.subNav && item.subNav.length > 0 && isActiveTab && (
                   <ul className="side-navigation-panel-select-inner">
                     {item.subNav.map((subNavItem: NavItemProps) => {
                       return (
