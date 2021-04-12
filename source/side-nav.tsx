@@ -17,7 +17,7 @@ declare global {
 export type NavItemProps = {
   title: string;
   itemId: string;
-  disable?: boolean;
+  // disabled?: boolean;
   elemBefore?: React.FC<unknown>;
   subNav?: NavItemProps[];
 };
