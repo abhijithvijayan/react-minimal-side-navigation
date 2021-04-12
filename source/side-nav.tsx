@@ -25,12 +25,14 @@ export type NavItemProps = {
 export type SideNavProps = {
   items: NavItemProps[];
   activeItemId: string;
+  activePredicate?: (item: NavItemProps) => boolean;
   onSelect?: ({itemId}: {itemId: string}) => void;
 };
 
 const Navigation: React.FC<SideNavProps> = ({
   activeItemId,
   onSelect,
+  activePredicate,
   items,
 }) => {
   const [activeSubNav, setActiveSubNav] = useState({
@@ -88,8 +90,14 @@ const Navigation: React.FC<SideNavProps> = ({
         >
           {items.map((item: NavItemProps) => {
             const ElemBefore = item.elemBefore;
+            const shouldExpandItem: boolean | undefined = activePredicate?.(
+              item
+            );
+            // prioritize active predicate value over the state value
             const isItemSelected: boolean =
+              shouldExpandItem ?? // fallback to the check only when undefined
               item.itemId === activeSubNav.selectedId;
+
             const isActiveTab: boolean =
               // item is expanded and
               activeSubNav.expanded &&
@@ -99,6 +107,7 @@ const Navigation: React.FC<SideNavProps> = ({
                 (item.subNav &&
                   item.subNav.some(
                     (_subNavItem: NavItemProps) =>
+                      activePredicate?.(_subNavItem) ?? // fallback to the check only when undefined
                       _subNavItem.itemId === activeSubNav.selectedId
                   )) ||
                 false);
@@ -149,6 +158,7 @@ const Navigation: React.FC<SideNavProps> = ({
                               handleClick(subNavItem.itemId);
                             }}
                             className={`side-navigation-panel-select-inner-option hover:bg-gray-100 hover:text-gray-800 hover:border-pink-500 ${
+                              activePredicate?.(subNavItem) ??
                               activeSubNav.selectedId === subNavItem.itemId
                                 ? 'side-navigation-panel-select-inner-option-selected'
                                 : ''
