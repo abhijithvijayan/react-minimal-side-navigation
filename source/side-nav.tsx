@@ -88,11 +88,13 @@ const Navigation: React.FC<SideNavProps> = ({
         >
           {items.map((item: NavItemProps) => {
             const ElemBefore = item.elemBefore;
+            const isItemSelected: boolean =
+              item.itemId === activeSubNav.selectedId;
             const isActiveTab: boolean =
               // item is expanded and
               activeSubNav.expanded &&
               // either the current expandable section is selected
-              (item.itemId === activeSubNav.selectedId ||
+              (isItemSelected ||
                 // or some item in the expandable section of the current item is selected or active
                 (item.subNav &&
                   item.subNav.some(
@@ -110,7 +112,7 @@ const Navigation: React.FC<SideNavProps> = ({
                       handleClick(item.itemId);
                     }}
                     className={`side-navigation-panel-select-option hover:bg-gray-100 hover:text-gray-800 hover:border-pink-500 focus:outline-none ${
-                      activeSubNav.selectedId === item.itemId
+                      isItemSelected
                         ? 'side-navigation-panel-select-option-selected'
                         : ''
                     }`}
