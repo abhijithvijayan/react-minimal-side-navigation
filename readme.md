@@ -94,7 +94,7 @@ function App() {
                   {
                     title: 'Projects',
                     itemId: '/management/projects',
-                    // Requires v1.9.0+ (https://github.com/abhijithvijayan/react-minimal-side-navigation/issues/13)
+                    // Requires v1.9.1+ (https://github.com/abhijithvijayan/react-minimal-side-navigation/issues/13)
                     elemBefore: () => <Icon name="cloud-snow" />,
                   },
                   {
