@@ -20,6 +20,14 @@
 	  .side-navigation-panel-select-option {
 		@apply flex items-center justify-between w-full px-6 py-3 text-gray-700 border-l-2 cursor-pointer;
 
+		&:focus {
+		  @apply outline-none;
+		}
+
+		&:hover {
+		  @apply bg-gray-100 text-gray-800 border-pink-500;
+		}
+
 		.side-navigation-panel-select-option-wrap {
 		  @apply flex items-center;
 
@@ -47,6 +55,10 @@
 	  .side-navigation-panel-select-inner-wrap {
 		.side-navigation-panel-select-inner-option {
 		  @apply flex items-center justify-between px-16 py-2 border-l-2 cursor-pointer text-gray-700;
+
+		  &:hover {
+			@apply bg-gray-100 text-gray-800 border-pink-500;
+		  }
 
 		  .side-navigation-panel-select-inner-option-wrap {
 			@apply flex items-center;

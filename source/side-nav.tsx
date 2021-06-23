@@ -111,7 +111,7 @@ const Navigation: React.FC<SideNavProps> = ({
                       handleSubNavExpand(item);
                       handleClick(item.itemId);
                     }}
-                    className={`side-navigation-panel-select-option hover:bg-gray-100 hover:text-gray-800 hover:border-pink-500 focus:outline-none ${
+                    className={`side-navigation-panel-select-option ${
                       isItemSelected
                         ? 'side-navigation-panel-select-option-selected'
                         : ''
@@ -150,7 +150,7 @@ const Navigation: React.FC<SideNavProps> = ({
                               });
                               handleClick(subNavItem.itemId);
                             }}
-                            className={`side-navigation-panel-select-inner-option hover:bg-gray-100 hover:text-gray-800 hover:border-pink-500 ${
+                            className={`side-navigation-panel-select-inner-option ${
                               activeSubNav.selectedId === subNavItem.itemId
                                 ? 'side-navigation-panel-select-inner-option-selected'
                                 : ''
