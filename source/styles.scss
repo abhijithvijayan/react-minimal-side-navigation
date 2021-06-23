@@ -46,7 +46,15 @@
 	.side-navigation-panel-select-inner {
 	  .side-navigation-panel-select-inner-wrap {
 		.side-navigation-panel-select-inner-option {
-			@apply block px-16 py-2 text-sm text-gray-700 border-l-2 cursor-pointer;
+		  @apply flex items-center justify-between px-16 py-2 border-l-2 cursor-pointer;
+
+		  .side-navigation-panel-select-inner-option-wrap {
+			@apply flex items-center;
+
+			.side-navigation-panel-select-inner-option-text {
+			  @apply mx-3 text-sm text-gray-700;
+			}
+		  }
 		}
 
 		.side-navigation-panel-select-inner-option-selected {

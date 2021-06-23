@@ -135,6 +135,8 @@ const Navigation: React.FC<SideNavProps> = ({
                 {item.subNav && item.subNav.length > 0 && isActiveTab && (
                   <ul className="side-navigation-panel-select-inner">
                     {item.subNav.map((subNavItem: NavItemProps) => {
+                      const SubItemElemBefore = subNavItem.elemBefore;
+
                       return (
                         <li
                           key={subNavItem.itemId}
@@ -154,7 +156,14 @@ const Navigation: React.FC<SideNavProps> = ({
                                 : ''
                             } `}
                           >
-                            {subNavItem.title}
+                            <span className="side-navigation-panel-select-inner-option-wrap">
+                              {/** Prefix Icon Component */}
+                              {SubItemElemBefore && <SubItemElemBefore />}
+
+                              <span className="side-navigation-panel-select-inner-option-text">
+                                {subNavItem.title}
+                              </span>
+                            </span>
                           </div>
                         </li>
                       );

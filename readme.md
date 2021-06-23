@@ -94,10 +94,13 @@ function App() {
                   {
                     title: 'Projects',
                     itemId: '/management/projects',
+                    // Requires v1.9.0+ (https://github.com/abhijithvijayan/react-minimal-side-navigation/issues/13)
+                    elemBefore: () => <Icon name="cloud-snow" />,
                   },
                   {
                     title: 'Members',
                     itemId: '/management/members',
+                    elemBefore: () => <Icon name="coffee" />,
                   },
                 ],
               },
