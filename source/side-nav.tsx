@@ -17,6 +17,7 @@ declare global {
 export type NavItemProps = {
   title: string;
   itemId: string;
+  htmlId?: string;
   // disabled?: boolean;
   elemBefore?: React.FC<unknown>;
   subNav?: NavItemProps[];
@@ -107,6 +108,7 @@ const Navigation: React.FC<SideNavProps> = ({
               <ul key={item.itemId} className="side-navigation-panel-select">
                 <li className="side-navigation-panel-select-wrap">
                   <div
+				    id={item.htmlId}
                     onClick={(): void => {
                       handleSubNavExpand(item);
                       handleClick(item.itemId);
